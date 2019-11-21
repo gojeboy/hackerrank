@@ -1,18 +1,32 @@
-def factorial(n):
-    if n == 0:
-        return 1
+import random
 
-    return n * factorial(n-1)
+# from numpy.core import half
+
+TheNumbers = list(range(1,1001))
+
+selectedNumber = int(input())
+
+count =1
+
+def findNumber(num, numbers):
+
+    half = len(numbers) // 2
+    mid_index = len(numbers)//2
+
+    if num == numbers[mid_index]:
+        numbers = [num]
+
+    elif num > numbers[mid_index]:
+        numbers = numbers[half:]
+
+    elif num < numbers[mid_index]:
+        numbers = numbers[:half]
 
 
-result = factorial(10)
+    if len(numbers)==1:
+        return numbers[0]
+    else:
+        return findNumber(num, numbers)
 
-print(result)
-
-everyone =[100, 100, 50, 40, 40, 20, 10]
-alice =[5, 25, 50, 120]
-
-
-
-
+print("You selected : ", findNumber(selectedNumber, TheNumbers))
 
